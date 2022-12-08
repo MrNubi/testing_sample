@@ -12,6 +12,11 @@ function App() {
   const ref = useRef();
   let torikaru = tricker;
   const [onMouse, setonMouse] = useState(false);
+  let videoChager = () => {
+    setonMouse((prev) => !prev);
+    ref.current.load();
+    ref.current.play();
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -33,9 +38,7 @@ function App() {
             poster="../src/tricker/tricker_eye_close.png"
             preload="metadata"
             onClick={(loadedmetadata) => {
-              setonMouse((prev) => !prev);
-              ref.current.load();
-              ref.current.play();
+              videoChager();
               console.log('onmouseOut', onMouse);
             }}
             // onMouseEnter={(loadedmetadata) => {
@@ -69,9 +72,7 @@ function App() {
             data-testId="minus-button"
             onClick={() => {
               setCount((prev) => prev - 1);
-              setonMouse((prev) => !prev);
-              ref.current.load();
-              ref.current.play();
+              videoChager();
             }}
           >
             -
@@ -83,9 +84,7 @@ function App() {
             data-testId="plus-button"
             onClick={() => {
               setCount((prev) => prev + 1);
-              setonMouse((prev) => !prev);
-              ref.current.load();
-              ref.current.play();
+              videoChager();
             }}
           >
             +
